@@ -12,14 +12,20 @@ class App extends React.Component {
 
 state = {
   games: [],
-  name: " "
+  name: " ",
+  
 }
 
 componentDidMount() {
   fetch("http://localhost:3000/games")
   .then(resp => resp.json())
   .then(games => this.setState({ games}))
+  
 }
+
+
+  
+
 
   render() {
     console.log(this.state.games)
@@ -28,7 +34,7 @@ componentDidMount() {
         <div className="page">
         <h1>Power Cycle</h1>
         <Navbar />
-        <GamesContainer  games={this.state.games} user={this.state.name}/>
+        <GamesContainer  games={this.state.games} user={this.state.name} />
         <Route exact path= '/login' component= {Login}/>
         
         <Route exact path='/register' component= {Register}/>

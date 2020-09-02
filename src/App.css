@@ -51,3 +51,10 @@ body {
   padding: 2rem;
   display: flex;
 }
+
+.app {
+  border: 2px;
+  padding: 1rem;
+  border-color: aqua;
+  background-color: rosybrown;
+}
