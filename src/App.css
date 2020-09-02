@@ -1,5 +1,10 @@
+body {
+  /* background-image: url("https://i.ytimg.com/vi/k7tEc1pp7bg/maxresdefault.jpg"); */
+}
+
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -35,4 +40,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.page {
+  background-color: blanchedalmond;
+}
+
+.game {
+  border: 20px;
+  padding: 2rem;
+  display: flex;
 }
