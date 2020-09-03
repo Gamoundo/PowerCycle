@@ -12,10 +12,10 @@ class App extends React.Component {
 
 state = {
   games: [],
-  name: " ",
+  name: " "
   
 }
-
+// user obj instead?
 componentDidMount() {
   fetch("http://localhost:3000/games")
   .then(resp => resp.json())
@@ -33,7 +33,11 @@ componentDidMount() {
       <Router className="App">
         <div className="page">
         <h1>Power Cycle</h1>
-        <Navbar />
+        <div>
+        <Register />
+        <Login />
+        </div>
+        
         <GamesContainer  games={this.state.games} user={this.state.name} />
         <Route exact path= '/login' component= {Login}/>
         

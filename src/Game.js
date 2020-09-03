@@ -9,7 +9,10 @@ class Game extends React.Component {
         show: false
     }
     
-    
+    handleShow = (e) => {
+        // e.preventDefault();
+        this.setState({ show: !this.state.show})
+    }
     
     
     
@@ -17,7 +20,7 @@ class Game extends React.Component {
         if (this.props.user !== " ") {
            return (
                <div>
-                   <button> Delete</button>
+                   
             <button> Write a Review</button>
                </div>
             
@@ -50,9 +53,9 @@ class Game extends React.Component {
             <div  className="game" >
                 <div>
                 <h3>{this.props.name}</h3>
-                <img style={{'height': "300px", "width": "248px"}} src={this.props.img} alt={this.props.name} onClick={this.props.handleShow}/>
+                <img style={{'height': "300px", "width": "248px"}} src={this.props.img} alt={this.props.name} onClick={this.handleShow}/>
                 {this.renderButtons()}
-                {this.props.show && this.state.reviews.length > 0 && this.renderReviews()}
+                {this.state.show && this.state.reviews.length > 0 && this.renderReviews()}
                 
                 
                 </div>

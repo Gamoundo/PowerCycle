@@ -6,6 +6,7 @@ function Review(props) {
         <div className="app">
             <p> Rating: {props.rating}</p>
             <p> {props.body}</p>
+            <button> Delete</button>
         </div>
     )
 }
