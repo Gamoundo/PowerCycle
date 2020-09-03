@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Review.destroy_all
 User.destroy_all
 Game.destroy_all
 
@@ -71,4 +72,59 @@ sleeping_dogs = Game.create!(
     esrb: "M",
 )
 
+Review.create!(
+    rating: 10,
+    body: "They didn't have to do Joel like that. The game was amazing regardless definitely reccomend.",
+    user_id: akil.id,
+    game_id: tlou2.id
+)
+
+Review.create!(
+    rating: 2,
+    body: "They didn't have to do Joel like that. When they killed Joel my hype died that day too.",
+    user_id: toby.id,
+    game_id: tlou2.id
+)
+
+Review.create!(
+    rating: 10,
+    body: "They didn't have to do Joel like that. I think the story was more impactful because of it.",
+    user_id: aizrael.id,
+    game_id: tlou2.id
+)
+
+Review.create!(
+    rating: 1,
+    body: "They really did Joel like that? Give me Joel or give me back my money! You can only take one from me.",
+    user_id: cerrada.id,
+    game_id: tlou2.id
+)
+
+Review.create!(
+    rating: 10,
+    body: "You haven't lived until you used immolate and climbed on top of a Griffin.",
+    user_id: cerrada.id,
+    game_id: dd.id
+)
+
+Review.create!(
+    rating: 10,
+    body: "WHen do We GeT the MMO CapCOM?",
+    user_id: akil.id,
+    game_id: dd.id
+)
+
+Review.create!(
+    rating: 10,
+    body: "Eddie Gordo for life!",
+    user_id: toby.id,
+    game_id: tekken7.id
+)
+
+Review.create!(
+    rating: 6,
+    body: "Please remove the capoeristas so I can enjoy this game.",
+    user_id: john.id,
+    game_id: tekken7.id
+)
 
