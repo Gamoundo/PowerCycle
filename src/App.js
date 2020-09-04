@@ -12,7 +12,7 @@ class App extends React.Component {
 
 state = {
   games: [],
-  name: " "
+  name: ""
   
 }
 // user obj instead?

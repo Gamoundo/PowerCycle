@@ -7,7 +7,25 @@ function Register() {
     const handleClose = () =>  setShow(false);
     const handleShow = () =>  setShow(true);
     
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
+      let user = {
+            name: e.target.name.value,
+            age: e.target.age.value
+        }
+
+        console.log(user)
+
+        fetch("http://localhost:3000/users", {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(r => r.json())
+        .then(user => console.log(user))
+    }
     return (
         <div>
             <button variant="primary" onClick={handleShow}>
@@ -22,7 +40,7 @@ function Register() {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div>
                     <input type="text" name="name" />
                     <label htmlFor="name">Name</label> 
