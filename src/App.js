@@ -8,13 +8,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import GamesContainer from "./GamesConatiner"
 
 
+const storedUser= window.localStorage.getItem("Power Cycle");
+
 class App extends React.Component {
 
 state = {
   games: [],
-  name: ""
+  user: {
+    name: JSON.parse(storedUser).name || "",
+    age: JSON.parse(storedUser).age || 0,
+    id: JSON.parse(storedUser).id || 1
+  }
   
 }
+
+
+
+
+ChangeUser = (newUser) => {
+  this.setState({
+     user: newUser
+   })
+  
+ }
+
 // user obj instead?
 componentDidMount() {
   fetch("http://localhost:3000/games")
@@ -29,16 +46,18 @@ componentDidMount() {
 
   render() {
     console.log(this.state.games)
+    console.log(localStorage)
     return (
       <Router className="App">
         <div className="page">
         <h1>Power Cycle</h1>
+        <h3>{this.state.user.name} is signed in</h3>
         <div>
-        <Register />
-        <Login />
+        {this.state.user.name === "" && <Register changeUser={this.ChangeUser}/>}
+        {this.state.user.name === "" && <Login changeUser={this.ChangeUser}/>}
         </div>
         
-        <GamesContainer  games={this.state.games} user={this.state.name} />
+        <GamesContainer  games={this.state.games} user={this.state.user} />
         <Route exact path= '/login' component= {Login}/>
         
         <Route exact path='/register' component= {Register}/>

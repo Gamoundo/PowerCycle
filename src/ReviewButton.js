@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from "react-bootstrap/Modal"
 
-function Login(props) {
+function ReviewButton(props) {
 
     const [show, setShow] = useState(false);
     const handleClose = () =>  setShow(false);
@@ -10,58 +10,55 @@ function Login(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-      let user = {
-            name: e.target.name.value
-            
+      let newReview = {
+            rating: e.target.rating.value,
+            body: e.target.body.value,
+            user_id: props.userId,
+            game_id: props.id
         }
 
-        console.log(user)
+        console.log(newReview)
 
-        fetch("http://localhost:3000/login", {
+        fetch("http://localhost:3000/reviews", {
             method: 'POST',
-            body: JSON.stringify(user),
+            body: JSON.stringify(newReview),
             headers: {
                 "Content-Type": "application/json"
             },
         }).then(r => r.json())
-        .then(user => {
-            if (!user.error) {
-                const userObj = {
-                    name: user.name,
-                    age: user.age,
-                    id: user.id
-                }
-                console.log(userObj)
-                props.changeUser(userObj)
-                window.localStorage.setItem("Power Cycle", JSON.stringify(userObj));
-                window.location = '/'
-            } else {
-                alert("User doesn't exist. Sure it isn't your first time here?")
-            }
-        })
+        .then(review => {
+            props.addReview(review)
+        }
+        )
     }
+    console.log(props.userId)
     return (
+        
         <div>
             <button variant="primary" onClick={handleShow}>
-        Login?
+        Write a Review!
       </button>
             
             
             <Modal show={show}>
             <Modal.Header closeButton onClick={handleClose}>
                 <Modal.Title id="registerForm">
-                    You like us that much? 👨‍❤️‍👨 
+                    Loving/scathing review 
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <form onSubmit={handleSubmit}>
                     <div>
-                    <input type="text" name="name" />
-                    <label htmlFor="name">Name</label> 
+                    <input type="integer" name="rating" />
+                    <label htmlFor="rating">Rating</label> 
+                    </div>
+                    <div>
+                    <input type="textarea" name="body" />
+                    <label htmlFor="body">Body</label> 
                     </div>
                     
                     
-                    <input type="submit" value="Login" onClick={handleClose} />
+                    <input type="submit" value="Create Review" onClick={handleClose} />
                     
                      
                 </form>
@@ -76,4 +73,4 @@ function Login(props) {
     )
 }
 
-export default Login;
+export default ReviewButton;

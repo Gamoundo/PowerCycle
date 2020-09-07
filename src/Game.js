@@ -1,5 +1,6 @@
 import React from "react"
 import Review from "./Review"
+import ReviewButton from "./ReviewButton"
 
 class Game extends React.Component {
     state = {
@@ -14,14 +15,32 @@ class Game extends React.Component {
         this.setState({ show: !this.state.show})
     }
     
+    removeReview = id => {
+        const updatedReviews = this.state.reviews.filter(review => {
+          if (review.id !== id) {
+            return true
+          } else {
+            return false
+          }
+        })
     
+        this.setState({
+          reviews: updatedReviews
+        })
+      }
+
+      addReview = newReview => {
+        this.setState(prevState => ({
+          reviews: [...prevState.reviews, newReview]
+        }))
+      }
     
     renderButtons = () => {
-        if (this.props.user !== " ") {
+        if (this.props.user.name !== "") {
            return (
                <div>
                    
-            <button> Write a Review</button>
+            <ReviewButton id={this.props.id} userId={this.props.user.id} addReview={this.addReview}/>
                </div>
             
            ) 
@@ -39,6 +58,7 @@ class Game extends React.Component {
               id={review.id}
               rating={review.rating}
               body={review.body}
+              removeReview={this.removeReview}
               
               />
            )  

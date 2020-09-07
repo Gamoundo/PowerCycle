@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from "react-bootstrap/Modal"
 
-function Register() {
+function Register(props) {
 
     const [show, setShow] = useState(false);
     const handleClose = () =>  setShow(false);
@@ -24,7 +24,19 @@ function Register() {
                 "Content-Type": "application/json"
             },
         }).then(r => r.json())
-        .then(user => console.log(user))
+        .then(user => {
+            if (!user.error) {
+                const userObj = {
+                    name: user.name,
+                    age: user.age,
+                    id: user.id
+                }
+                console.log(userObj)
+                props.changeUser(userObj)
+                window.localStorage.setItem("Power Cycle", JSON.stringify(userObj));
+                window.location = '/'
+            }
+        })
     }
     return (
         <div>
