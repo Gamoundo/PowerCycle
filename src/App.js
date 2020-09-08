@@ -15,15 +15,19 @@ class App extends React.Component {
 state = {
   games: [],
   user: {
-    name: JSON.parse(storedUser).name || "",
-    age: JSON.parse(storedUser).age || 0,
-    id: JSON.parse(storedUser).id || 1
+    name: storedUser ? JSON.parse(storedUser).name : "",
+    age: storedUser ? JSON.parse(storedUser).age : 0,
+    id: storedUser ? JSON.parse(storedUser).id : 1
   }
   
 }
 
 
-
+handleLogout = () => {
+  window.localStorage.clear();
+  window.location = '/'
+  
+}
 
 ChangeUser = (newUser) => {
   this.setState({
@@ -51,7 +55,8 @@ componentDidMount() {
       <Router className="App">
         <div className="page">
         <h1>Power Cycle</h1>
-        <h3>{this.state.user.name} is signed in</h3>
+        {storedUser && <h3>{this.state.user.name} is signed in</h3>}
+        {this.state.user.name !== "" && <button onClick={this.handleLogout}>Logout</button>}
         <div>
         {this.state.user.name === "" && <Register changeUser={this.ChangeUser}/>}
         {this.state.user.name === "" && <Login changeUser={this.ChangeUser}/>}
