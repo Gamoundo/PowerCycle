@@ -1,26 +1,11 @@
 import React from "react"
+import EditButton from "./EditButton";
 
 function Review(props) {
   const  handleDelete = (e) => {
         e.preventDefault();
         
-        // let user= window.localStorage.getItem("TheLinguist");
-        // let  token = JSON.parse(user).userToken;
-        // let  user_id = JSON.parse(user).user_id; 
-    
-        // debugger
-    //     console.log('prefetch')
-        
-    //     let user= window.localStorage.getItem("TheLinguist");
-    //  let  token = JSON.parse(user).userToken;
-    //  let  user_id = JSON.parse(user).user_id 
-        
-        
-    //     let obj = {
-    //         course_id: this.props.id,
-    //         user_id: user_id
-            
-    //     }
+       
         
         
         fetch(`http://localhost:3000/reviews/${props.id}`, {
@@ -37,12 +22,13 @@ function Review(props) {
 
 
 
-    console.log(props)
+    console.log(props.user.id)
     return (
         <div className="app">
             <p> Rating: {props.rating}</p>
             <p> {props.body}</p>
-            <button onClick={handleDelete}> Delete</button>
+            {props.userId === props.user.id && <EditButton  id={props.id} gameId={props.game_id} userId={props.user_id} rating={props.rating} body={props.body}/> }
+            {props.userId === props.user.id && <button onClick={handleDelete}> Delete</button>}
         </div>
     )
 }
