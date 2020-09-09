@@ -15,6 +15,14 @@ class ReviewsController < ApplicationController
 
     end
 
+    def update
+        review = Review.find_by(id: params[:id])
+        review.rating = params[:rating]
+        review.body = params[:body]
+        review.save
+        render json: review
+    end
+
     def destroy
         review = Review.find_by(id: params[:id])
         review.destroy
