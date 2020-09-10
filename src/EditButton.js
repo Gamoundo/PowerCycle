@@ -26,6 +26,8 @@ function EditButton(props) {
                 "Content-Type": "application/json"
             },
         }).then(r => r.json())
+        .then(rev => props.setReviews(rev))
+        // window.location = '/'
         // .then(review => {
         //     props.addReview(review)
         // }
@@ -49,11 +51,11 @@ function EditButton(props) {
             <Modal.Body>
                 <form onSubmit={handleSubmit}>
                     <div>
-                    <input type="integer" name="rating" placeholer={props.rating}/>
+                    <input type="integer" name="rating" placeholder={props.rating}/>
                     <label htmlFor="rating">Rating</label> 
                     </div>
                     <div>
-                    <input type="textarea" name="body" placeholer={props.body}/>
+                    <input type="textarea" name="body" placeholder={props.body}/>
                     <label htmlFor="body">Body</label> 
                     </div>
                     

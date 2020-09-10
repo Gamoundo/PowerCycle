@@ -62,6 +62,7 @@ class Game extends React.Component {
               userId={review.user_id}
               user={this.props.user}
               gameId={review.game_id}
+              setReviews={this.props.setReviews}
               />
            )  
               

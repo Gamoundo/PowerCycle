@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from "react-bootstrap/Modal"
+import ReactPlayer from 'react-player'
 
 function Register(props) {
 
@@ -35,6 +36,8 @@ function Register(props) {
                 props.changeUser(userObj)
                 window.localStorage.setItem("Power Cycle", JSON.stringify(userObj));
                 window.location = '/'
+            }else {
+                alert("Wrong! Again!")
             }
         })
     }
@@ -66,6 +69,7 @@ function Register(props) {
                     
                      
                 </form>
+                <ReactPlayer url='https://www.youtube.com/watch?v=paYa6m5yJEE&list=PLb0mEpWg8c6W8ns6LR8uMfY-Pue6fl5Pe&index=25&t=0s'/>
             </Modal.Body>
         </Modal>
         </div>

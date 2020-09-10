@@ -27,7 +27,7 @@ function Review(props) {
         <div className="app">
             <p> Rating: {props.rating}</p>
             <p> {props.body}</p>
-            {props.userId === props.user.id && <EditButton  id={props.id} gameId={props.game_id} userId={props.user_id} rating={props.rating} body={props.body}/> }
+            {props.userId === props.user.id && <EditButton  id={props.id} gameId={props.game_id} userId={props.user_id} rating={props.rating} body={props.body} setReviews={props.setReviews}/> }
             {props.userId === props.user.id && <button onClick={handleDelete}> Delete</button>}
         </div>
     )
