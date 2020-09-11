@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanalei&family=Press+Start+2P&display=swap');
+
 body {
   background-image: url("https://cdn.funnyisms.com/c36217df-268e-49c4-8952-9d70939501fa.gif");
 }
@@ -44,6 +46,7 @@ body {
 
 .page {
   background-color: blanchedalmond;
+  font-family: 'Press Start 2P', cursive;
   /* background-image: url("https://cdn.funnyisms.com/c36217df-268e-49c4-8952-9d70939501fa.gif"); */
 }
 

@@ -9,17 +9,7 @@ class GamesContainer extends React.Component {
 
     }
     
-        setReviews = (updatedReviev) => {
-           const newReviews = this.state.reviews.map((review) => {
-                if (review.id === updatedReviev.id) {
-                    return updatedReviev
-                } else {
-                    return review
-                }
-
-            })
-            this.setState({reviews: newReviews})
-        }
+        
 
 
 
@@ -49,7 +39,7 @@ class GamesContainer extends React.Component {
             reviews={this.state.reviews}
             handleShow={this.handleShow}
             show={this.state.show}
-            setReviews={this.setReviews}
+            
             />
          )  
             

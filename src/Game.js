@@ -14,6 +14,18 @@ class Game extends React.Component {
         // e.preventDefault();
         this.setState({ show: !this.state.show})
     }
+
+    setReviews = (updatedReviev) => {
+      const newReviews = this.state.reviews.map((review) => {
+           if (review.id === updatedReviev.id) {
+               return updatedReviev
+           } else {
+               return review
+           }
+
+       })
+       this.setState({reviews: newReviews})
+   }
     
     removeReview = id => {
         const updatedReviews = this.state.reviews.filter(review => {
@@ -62,7 +74,7 @@ class Game extends React.Component {
               userId={review.user_id}
               user={this.props.user}
               gameId={review.game_id}
-              setReviews={this.props.setReviews}
+              setReviews={this.setReviews}
               />
            )  
               
