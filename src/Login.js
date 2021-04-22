@@ -48,13 +48,13 @@ function Login(props) {
       </button>
             
             
-            <Modal show={show}>
+            <Modal   show={show}>
             <Modal.Header closeButton onClick={handleClose}>
                 <Modal.Title id="registerForm">
                     You like us that much? 👨‍❤️‍👨 
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body classname="modal">
                 <form onSubmit={handleSubmit}>
                     <div>
                     <input type="text" name="name" />
