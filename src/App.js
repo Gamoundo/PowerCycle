@@ -57,7 +57,7 @@ componentDidMount() {
         <img src="https://cdn.funnyisms.com/c36217df-268e-49c4-8952-9d70939501fa.gif"  alt="gintama anti-piracy"/>
         <h1>Power Cycle</h1>
         
-        {storedUser && <h3>{this.state.user.name} is signed in</h3>}
+        {this.state.user.name && <h3>{this.state.user.name} is signed in</h3>}
         {this.state.user.name !== "" && <button onClick={this.handleLogout}>Logout</button>}
         <div>
         {this.state.user.name === "" && <Register changeUser={this.ChangeUser}/>}

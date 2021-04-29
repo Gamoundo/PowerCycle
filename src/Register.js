@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Modal from "react-bootstrap/Modal"
 import ReactPlayer from 'react-player'
+import {useHistory} from "react-router-dom"
 
 function Register(props) {
-
+    const history= useHistory()
     const [show, setShow] = useState(false);
     const handleClose = () =>  setShow(false);
     const handleShow = () =>  setShow(true);
@@ -35,7 +36,7 @@ function Register(props) {
                 console.log(userObj)
                 props.changeUser(userObj)
                 window.localStorage.setItem("Power Cycle", JSON.stringify(userObj));
-                window.location = '/'
+                history.push('/')
             }else {
                 alert("Wrong! Again!")
             }
